@@ -1,9 +1,9 @@
 (defn isPenta
 	(fn [x]
-	
-	
-	)
+		
 	
 	)
 	
-(println (isPenta 5))	
+	)
+	
+(println (Math/sqrt 5))	
