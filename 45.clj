@@ -6,4 +6,4 @@
 	
 	)
 	
-(println (Math/sqrt 5))	
+(println )	
