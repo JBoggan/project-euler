@@ -1,0 +1,54 @@
+object PrimeFactors {
+
+def of(n:Int) = {
+ def tryFactor(n:Int, divider:Int) : List[Int] = 
+  if (n == 1) Nil
+  else if (n % divider == 0) divider :: tryFactor(n/divider, divider)
+  else tryFactor(n, divider+1)
+ tryFactor(n,2)
+}
+def unique(n:Int) = {
+PrimeFactors.of(n).distinct
+}
+def rad(n:Int) = {
+PrimeFactors.unique(n).product
+}
+def tripleRad(a:Int,b:Int,c:Int) = {
+var alist = PrimeFactors.unique(a)
+var blist = PrimeFactors.unique(b)
+var clist = PrimeFactors.unique(c)
+var totallist = alist ::: blist ::: clist
+totallist.distinct.product
+}
+}
+
+
+var sum = 0
+var c = 3
+while(c < 120000){
+if(c % 10 == 0){println(c)}
+if(PrimeFactors.rad(c) == c){}
+else{
+
+
+var factors = PrimeFactors.unique(c)
+var a = 1
+var b = c-1
+while(a < b){
+var flag = 0
+factors.foreach(i => if(a % i == 0 || b % i == 0){flag = 1})
+if(flag == 0){
+	if(PrimeFactors.tripleRad(a,b,c) < c){
+	sum = sum + c
+	}
+}
+a = a+1
+b = b-1
+}
+
+
+} // this is the end of the else loop
+c = c + 1
+}
+
+println(sum)
